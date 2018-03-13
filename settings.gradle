@@ -1,0 +1,1 @@
+include ':app', ':alpha', ':JPushExample(856321)', ':calendar', ':JPushExample(866036)'
