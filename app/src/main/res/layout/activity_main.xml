@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.alpha.demo.cn.alpha.demo.MainActivity">
+
+    <cn.alpha.ui.view.TitleBar xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/abc_action_bar_default_height_material"
+        app:backgroudColor="@color/colorPrimary"
+        app:titleColor="@android:color/white"
+        app:titleText="Home"
+        app:titleTextSize="18sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_db"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DB" />
+
+            <Button
+                android:id="@+id/btn_net"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="net" />
+
+            <Button
+                android:id="@+id/btn_views"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="views" />
+
+            <Button
+                android:id="@+id/btn_widgets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="widgets" />
+
+            <Button
+                android:id="@+id/btn_jni"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="jni" />
+
+            <Button
+                android:id="@+id/btn_hybird"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="hybird" />
+
+            <Button
+                android:id="@+id/btn_imageloader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="imageloader" />
+
+            <Button
+                android:id="@+id/btn_others"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="others" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

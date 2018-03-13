@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <cn.alpha.ui.view.TitleBar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/abc_action_bar_default_height_material"
+        app:backgroudColor="@color/colorPrimary"
+        app:titleColor="@color/white"
+        app:titleText="ThinkProgressBar"
+        app:titleTextSize="18sp"/>
+
+    <cn.alpha.ui.view.ThinkProgressBar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        app:cellDivider="5dip"
+        app:cellLenght="20dp"
+        app:displayText="Loading..."
+        app:displayTextColor="@color/black"
+        app:displayTextSize="20sp"/>
+
+</RelativeLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <cn.alpha.ui.view.TitleBar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/abc_action_bar_default_height_material"
+        app:backgroudColor="@color/colorPrimary"
+        app:titleColor="@color/white"
+        app:titleText="LabelView"
+        app:titleTextSize="18sp"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dip">
+
+        <ImageView
+            android:id="@+id/img_label_view"
+            android:layout_width="250dip"
+            android:layout_height="250dip"
+            android:background="@android:color/black"
+            android:padding="1dip"
+            android:scaleType="centerCrop"
+            android:src="@drawable/image_ppf"/>
+
+        <cn.alpha.ui.view.LabelView
+            android:id="@+id/labelview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/img_label_view"
+            android:layout_alignRight="@id/img_label_view"
+            android:layout_marginBottom="5dip"
+            android:layout_marginRight="5dip"
+            app:label_TextSize="12sp"/>
+    </RelativeLayout>
+</LinearLayout>
