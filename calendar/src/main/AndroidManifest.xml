@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cn.law.calendar">
+    package="cn.law.quick">
     <!-- Required -->
     <permission
-        android:name="cn.law.calendar.permission.JPUSH_MESSAGE"
+        android:name="cn.law.quick.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature" />
 
     <!-- Required  一些系统要求的权限，如访问网络等-->
-    <uses-permission android:name="cn.law.calendar.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="cn.law.quick.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -20,6 +20,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
+
+
     <!-- Optional for location -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -30,46 +32,40 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
 
     <application
-        android:name=".app.App"
+        android:name="cn.law.quick.app.App"
         android:allowBackup="true"
         android:icon="@mipmap/favicon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionbar">
-        <activity android:name=".module.MainActivity">
+        <activity android:name="cn.law.quick.module.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".module.sign.SignInActivity">
+        <activity android:name="cn.law.quick.module.sign.SignInActivity">
 
         </activity>
-        <activity android:name=".module.WeatherActivity" />
-        <activity android:name=".module.hybird.HybirdActivity" />
+        <activity android:name="cn.law.quick.module.WeatherActivity" />
+        <activity android:name="cn.law.quick.module.hybird.HybirdActivity" />
 
         <!-- For test only 测试的主程序-->
         <activity
             android:name=".component.push.MainActivity"
-            android:label="@string/app_name">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            android:label="@string/app_name" >
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
         </activity>
         <!-- For test only 测试高级功能 -->
-        <activity
-            android:name=".component.push.PushSetActivity"
-            android:label="@string/app_name"></activity>
+        <activity android:name=".component.push.PushSetActivity" android:label="@string/app_name"></activity>
         <!-- For test only 测试设置 -->
-        <activity
-            android:name=".component.push.SettingActivity"
-            android:label="@string/app_name"></activity>
+        <activity android:name=".component.push.SettingActivity" android:label="@string/app_name"></activity>
         <!-- For test only 测试状态通知栏，需要打开的Activity -->
-        <activity
-            android:name=".component.push.TestActivity"
-            android:exported="false">
+        <activity android:name=".component.push.TestActivity" android:exported="false">
             <intent-filter>
                 <action android:name="jpush.testAction" />
                 <category android:name="jpush.testCategory" />
@@ -79,20 +75,20 @@
         <!-- Rich push 核心功能 since 2.0.6-->
         <activity
             android:name="cn.jpush.android.ui.PopWinActivity"
-            android:exported="false"
-            android:theme="@style/MyDialogStyle"></activity>
+            android:theme="@style/MyDialogStyle"
+            android:exported="false">
+        </activity>
 
         <!-- Required SDK核心功能-->
         <activity
             android:name="cn.jpush.android.ui.PushActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:exported="false"
-            android:theme="@android:style/Theme.NoTitleBar">
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:exported="false">
             <intent-filter>
                 <action android:name="cn.jpush.android.ui.PushActivity" />
-
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="cn.law.calendar" />
+                <category android:name="cn.law.quick" />
             </intent-filter>
         </activity>
 
@@ -100,8 +96,8 @@
         <!-- 可配置android:process参数将PushService放在其他进程中 -->
         <service
             android:name="cn.jpush.android.service.PushService"
-            android:exported="false"
-            android:process=":mult">
+            android:process=":mult"
+            android:exported="false">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.REGISTER" />
                 <action android:name="cn.jpush.android.intent.REPORT" />
@@ -111,9 +107,10 @@
         </service>
         <!-- since 3.0.9 Required SDK 核心功能-->
         <provider
+            android:authorities="cn.law.quick.DataProvider"
             android:name="cn.jpush.android.service.DataProvider"
-            android:authorities="cn.law.calendar.DataProvider"
-            android:exported="false" />
+            android:exported="false"
+            />
 
         <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
         <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
@@ -123,15 +120,16 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.DaemonService" />
-                <category android:name="cn.law.calendar" />
+                <category android:name="cn.law.quick" />
             </intent-filter>
 
         </service>
         <!-- since 3.1.0 Required SDK 核心功能-->
         <provider
+            android:authorities="cn.law.quick.DownloadProvider"
             android:name="cn.jpush.android.service.DownloadProvider"
-            android:authorities="cn.law.calendar.DownloadProvider"
-            android:exported="true" />
+            android:exported="true"
+            />
         <!-- Required SDK核心功能-->
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
@@ -139,7 +137,7 @@
             android:exported="false">
             <intent-filter android:priority="1000">
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />   <!--Required  显示通知栏 -->
-                <category android:name="cn.law.calendar" />
+                <category android:name="cn.law.quick" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -155,22 +153,20 @@
         </receiver>
 
         <!-- Required SDK核心功能-->
-        <receiver
-            android:name="cn.jpush.android.service.AlarmReceiver"
-            android:exported="false" />
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver" android:exported="false"/>
 
         <!-- User defined.  For test only  用户自定义的广播接收器-->
         <receiver
             android:name=".component.push.MyReceiver"
-            android:enabled="true"
-            android:exported="false">
+            android:exported="false"
+            android:enabled="true">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!--Required  用户注册SDK的intent-->
                 <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!--Required  用户接收SDK消息的intent-->
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!--Required  用户接收SDK通知栏信息的intent-->
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!--Required  用户打开自定义通知栏的intent-->
                 <action android:name="cn.jpush.android.intent.CONNECTION" /><!-- 接收网络变化 连接/断开 since 1.6.3 -->
-                <category android:name="cn.law.calendar" />
+                <category android:name="cn.law.quick" />
             </intent-filter>
         </receiver>
 
@@ -178,16 +174,12 @@
         <receiver android:name=".component.push.MyJPushMessageReceiver">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
-                <category android:name="cn.law.calendar"></category>
+                <category android:name="cn.law.quick"></category>
             </intent-filter>
         </receiver>
         <!-- Required  . Enable it you can get statistics data with channel -->
-        <meta-data
-            android:name="JPUSH_CHANNEL"
-            android:value="developer-default" />
-        <meta-data
-            android:name="JPUSH_APPKEY"
-            android:value="0108e92848f3515fb96dcd71" /> <!--  </>值来自开发者平台取得的AppKey-->
+        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
+        <meta-data android:name="JPUSH_APPKEY" android:value="94c0c5f7b969e70f4e29ff83" /> <!--  </>值来自开发者平台取得的AppKey-->
 
     </application>
 

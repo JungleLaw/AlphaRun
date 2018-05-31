@@ -1,4 +1,4 @@
-package cn.law.calendar.module.sign;
+package cn.law.quick.module.sign;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,8 +12,8 @@ import cn.alpha.net.http.Http;
 import cn.alpha.net.http.HttpCallback;
 import cn.alpha.net.http.client.HttpParams;
 import cn.alpha.utils.Logger;
-import cn.law.calendar.R;
-import cn.law.calendar.base.AppBaseCompatActivity;
+import cn.law.quick.R;
+import cn.law.quick.base.AppBaseCompatActivity;
 
 /**
  * Created by Jungle on 2018/3/10.
@@ -71,6 +71,7 @@ public class SignInActivity extends AppBaseCompatActivity implements View.OnClic
                 }
                 params.put("username", username);
                 params.put("password", password);
+                params.put("platform", "Android");
                 Logger.i("alpha-http", "loadData");
                 Http.post("mine", SIGN_UP, params, new HttpCallback() {
                     @Override

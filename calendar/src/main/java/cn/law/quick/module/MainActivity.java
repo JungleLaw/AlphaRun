@@ -1,4 +1,4 @@
-package cn.law.calendar.module;
+package cn.law.quick.module;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,10 +7,10 @@ import android.view.View;
 import android.widget.Button;
 
 import butterknife.BindView;
-import cn.law.calendar.R;
-import cn.law.calendar.base.AppBaseCompatActivity;
-import cn.law.calendar.module.hybird.HybirdActivity;
-import cn.law.calendar.module.sign.SignInActivity;
+import cn.law.quick.R;
+import cn.law.quick.base.AppBaseCompatActivity;
+import cn.law.quick.module.hybird.HybirdActivity;
+import cn.law.quick.module.sign.SignInActivity;
 
 public class MainActivity extends AppBaseCompatActivity implements View.OnClickListener {
     @BindView(R.id.btn_sign)

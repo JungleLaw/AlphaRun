@@ -1,4 +1,4 @@
-package cn.law.calendar.app;
+package cn.law.quick.app;
 
 import android.app.Application;
 

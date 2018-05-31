@@ -1,4 +1,4 @@
-package cn.law.calendar.component.push;
+package cn.law.quick.component.push;
 
 import android.app.Notification;
 import android.content.Intent;
@@ -18,18 +18,18 @@ import cn.jpush.android.api.BasicPushNotificationBuilder;
 import cn.jpush.android.api.CustomPushNotificationBuilder;
 import cn.jpush.android.api.InstrumentedActivity;
 import cn.jpush.android.api.JPushInterface;
+import cn.law.quick.R;
 import cn.jpush.android.api.MultiActionsNotificationBuilder;
 import cn.jpush.android.api.TagAliasCallback;
-import cn.law.calendar.R;
 
-import static cn.law.calendar.component.push.TagAliasOperatorHelper.ACTION_ADD;
-import static cn.law.calendar.component.push.TagAliasOperatorHelper.ACTION_CHECK;
-import static cn.law.calendar.component.push.TagAliasOperatorHelper.ACTION_CLEAN;
-import static cn.law.calendar.component.push.TagAliasOperatorHelper.ACTION_DELETE;
-import static cn.law.calendar.component.push.TagAliasOperatorHelper.ACTION_GET;
-import static cn.law.calendar.component.push.TagAliasOperatorHelper.ACTION_SET;
-import static cn.law.calendar.component.push.TagAliasOperatorHelper.TagAliasBean;
-import static cn.law.calendar.component.push.TagAliasOperatorHelper.sequence;
+import static cn.law.quick.component.push.TagAliasOperatorHelper.ACTION_ADD;
+import static cn.law.quick.component.push.TagAliasOperatorHelper.ACTION_CHECK;
+import static cn.law.quick.component.push.TagAliasOperatorHelper.ACTION_CLEAN;
+import static cn.law.quick.component.push.TagAliasOperatorHelper.ACTION_DELETE;
+import static cn.law.quick.component.push.TagAliasOperatorHelper.ACTION_GET;
+import static cn.law.quick.component.push.TagAliasOperatorHelper.ACTION_SET;
+import static cn.law.quick.component.push.TagAliasOperatorHelper.TagAliasBean;
+import static cn.law.quick.component.push.TagAliasOperatorHelper.sequence;
 
 
 public class PushSetActivity extends InstrumentedActivity implements OnClickListener {
@@ -99,7 +99,7 @@ public class PushSetActivity extends InstrumentedActivity implements OnClickList
     TagAliasCallback tagAlias = new TagAliasCallback() {
         @Override
         public void gotResult(int responseCode, String alias, Set<String> tags) {
-            Log.e(TAG,"responseCode:"+responseCode+",alias:"+alias+",tags:"+tags);
+            Log.e(TAG, "responseCode:" + responseCode + ",alias:" + alias + ",tags:" + tags);
         }
     };
 
@@ -153,13 +153,13 @@ public class PushSetActivity extends InstrumentedActivity implements OnClickList
 
     /**
      * 处理tag/alias相关操作的点击
-     * */
+     */
     public void onTagAliasAction(View view) {
         Set<String> tags = null;
         String alias = null;
         int action = -1;
         boolean isAliasAction = false;
-        switch (view.getId()){
+        switch (view.getId()) {
             //设置手机号码:
             case R.id.bt_setmobileNumber:
                 handleSetMobileNumber();
@@ -167,7 +167,7 @@ public class PushSetActivity extends InstrumentedActivity implements OnClickList
             //增加tag
             case R.id.bt_addtag:
                 tags = getInPutTags();
-                if(tags == null){
+                if (tags == null) {
                     return;
                 }
                 action = ACTION_ADD;
@@ -175,7 +175,7 @@ public class PushSetActivity extends InstrumentedActivity implements OnClickList
             //设置tag
             case R.id.bt_settag:
                 tags = getInPutTags();
-                if(tags == null){
+                if (tags == null) {
                     return;
                 }
                 action = ACTION_SET;
@@ -183,7 +183,7 @@ public class PushSetActivity extends InstrumentedActivity implements OnClickList
             //删除tag
             case R.id.bt_deletetag:
                 tags = getInPutTags();
-                if(tags == null){
+                if (tags == null) {
                     return;
                 }
                 action = ACTION_DELETE;
@@ -198,7 +198,7 @@ public class PushSetActivity extends InstrumentedActivity implements OnClickList
                 break;
             case R.id.bt_checktag:
                 tags = getInPutTags();
-                if(tags == null){
+                if (tags == null) {
                     return;
                 }
                 action = ACTION_CHECK;
@@ -206,7 +206,7 @@ public class PushSetActivity extends InstrumentedActivity implements OnClickList
             //设置alias
             case R.id.bt_setalias:
                 alias = getInPutAlias();
-                if(TextUtils.isEmpty(alias)){
+                if (TextUtils.isEmpty(alias)) {
                     return;
                 }
                 isAliasAction = true;
@@ -228,16 +228,16 @@ public class PushSetActivity extends InstrumentedActivity implements OnClickList
         TagAliasBean tagAliasBean = new TagAliasBean();
         tagAliasBean.action = action;
         sequence++;
-        if(isAliasAction){
+        if (isAliasAction) {
             tagAliasBean.alias = alias;
-        }else{
+        } else {
             tagAliasBean.tags = tags;
         }
         tagAliasBean.isAliasAction = isAliasAction;
-        TagAliasOperatorHelper.getInstance().handleAction(getApplicationContext(),sequence,tagAliasBean);
+        TagAliasOperatorHelper.getInstance().handleAction(getApplicationContext(), sequence, tagAliasBean);
     }
 
-    private void handleSetMobileNumber(){
+    private void handleSetMobileNumber() {
         EditText mobileEdit = (EditText) findViewById(R.id.et_mobilenumber);
         String mobileNumber = mobileEdit.getText().toString().trim();
         if (TextUtils.isEmpty(mobileNumber)) {
@@ -248,12 +248,13 @@ public class PushSetActivity extends InstrumentedActivity implements OnClickList
             return;
         }
         sequence++;
-        TagAliasOperatorHelper.getInstance().handleAction(getApplicationContext(),sequence,mobileNumber);
+        TagAliasOperatorHelper.getInstance().handleAction(getApplicationContext(), sequence, mobileNumber);
     }
+
     /**
      * 获取输入的alias
-     * */
-    private String getInPutAlias(){
+     */
+    private String getInPutAlias() {
         EditText aliasEdit = (EditText) findViewById(R.id.et_alias);
         String alias = aliasEdit.getText().toString().trim();
         if (TextUtils.isEmpty(alias)) {
@@ -266,10 +267,11 @@ public class PushSetActivity extends InstrumentedActivity implements OnClickList
         }
         return alias;
     }
+
     /**
      * 获取输入的tags
-     * */
-    private Set<String> getInPutTags(){
+     */
+    private Set<String> getInPutTags() {
         EditText tagEdit = (EditText) findViewById(R.id.et_tag);
         String tag = tagEdit.getText().toString().trim();
         // 检查 tag 的有效性
@@ -288,7 +290,7 @@ public class PushSetActivity extends InstrumentedActivity implements OnClickList
             }
             tagSet.add(sTagItme);
         }
-        if(tagSet.isEmpty()){
+        if (tagSet.isEmpty()) {
             Toast.makeText(getApplicationContext(), R.string.error_tag_empty, Toast.LENGTH_SHORT).show();
             return null;
         }

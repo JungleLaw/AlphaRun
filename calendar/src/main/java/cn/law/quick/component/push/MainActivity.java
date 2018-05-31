@@ -1,4 +1,4 @@
-package cn.law.calendar.component.push;
+package cn.law.quick.component.push;
 
 
 import android.content.BroadcastReceiver;
@@ -15,7 +15,8 @@ import android.widget.Toast;
 
 import cn.jpush.android.api.InstrumentedActivity;
 import cn.jpush.android.api.JPushInterface;
-import cn.law.calendar.R;
+ import  cn.law.quick.R;
+
 
 
 public class MainActivity extends InstrumentedActivity implements OnClickListener{

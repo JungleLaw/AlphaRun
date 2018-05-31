@@ -1,17 +1,16 @@
-package cn.law.calendar.base;
+package cn.law.quick.base;
 
 
-import cn.law.calendar.R;
-import cn.alpha.protocol.ProtocolFragmentActivity;
+import cn.law.quick.R;
+import cn.alpha.protocol.ProtocolAppCompatActivity;
 
 /**
  * Created by Law on 2017/3/28.
  */
 
-public abstract class AppBaseFragmentActivity extends ProtocolFragmentActivity {
+public abstract class AppBaseCompatActivity extends ProtocolAppCompatActivity {
     public static final int[] entryAnims = {R.anim.slide_entry_right, R.anim.slide_exit_left};
     public static final int[] exitAnims = {R.anim.slide_entry_left, R.anim.slide_exit_right};
-
 
     @Override
     public void initVariables() {
@@ -43,4 +42,5 @@ public abstract class AppBaseFragmentActivity extends ProtocolFragmentActivity {
     public int[] loadEntryAnimation() {
         return entryAnims;
     }
+
 }

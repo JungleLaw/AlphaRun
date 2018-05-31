@@ -1,7 +1,7 @@
-package cn.law.calendar.base;
+package cn.law.quick.base;
 
 import cn.alpha.protocol.ProtocolActivity;
-import cn.law.calendar.R;
+import cn.law.quick.R;
 
 /**
  * Created by Law on 2017/3/28.

@@ -1,4 +1,4 @@
-package cn.law.calendar.module;
+package cn.law.quick.module;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,8 +12,8 @@ import butterknife.BindView;
 import cn.alpha.net.http.Http;
 import cn.alpha.net.http.HttpCallback;
 import cn.alpha.net.http.client.HttpParams;
-import cn.law.calendar.R;
-import cn.law.calendar.base.AppBaseCompatActivity;
+import cn.law.quick.R;
+import cn.law.quick.base.AppBaseCompatActivity;
 
 /**
  * Created by Jungle on 2018/3/11.
@@ -24,6 +24,8 @@ public class WeatherActivity extends AppBaseCompatActivity implements View.OnCli
 
     @BindView(R.id.et_city_name)
     EditText mEtCityName;
+    @BindView(R.id.et_token)
+    EditText mEtToken;
     @BindView(R.id.btn_get_weather)
     Button mBtnGetWeather;
     @BindView(R.id.tv_weather)
@@ -55,6 +57,9 @@ public class WeatherActivity extends AppBaseCompatActivity implements View.OnCli
                     return;
                 }
                 params.put("city", city);
+//                params.put("token", "FD6554159B7D3CE78BCB12359C03B902");
+                params.put("token", mEtToken.getText().toString());
+                params.put("platform", "app");
                 Http.post("mine", WEATHER, params, new HttpCallback() {
                     @Override
                     public void onSuccess(String t) {

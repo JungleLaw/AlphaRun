@@ -1,4 +1,4 @@
-package cn.law.calendar.component.push;
+package cn.law.quick.component.push;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
