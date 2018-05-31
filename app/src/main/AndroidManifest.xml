@@ -44,6 +44,7 @@
         <activity android:name="cn.alpha.demo.view.ShapedImageViewActivity" />
         <activity android:name="cn.alpha.demo.view.LabelViewActivity" />
         <activity android:name="cn.alpha.demo.view.ThinkProgressorActivity" />
+        <activity android:name="cn.alpha.demo.view.MessageBarActivity" />
         <activity android:name="cn.alpha.demo.widget.ToastActivity" />
         <activity android:name="cn.alpha.demo.jni.JNIActivity" />
         <activity android:name="cn.alpha.demo.hybird.HybirdActivity">

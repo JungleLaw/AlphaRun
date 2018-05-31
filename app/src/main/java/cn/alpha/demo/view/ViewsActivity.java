@@ -37,4 +37,9 @@ public class ViewsActivity extends AppBaseCompatActivity {
     void gotoLabelViewActivity() {
         startActivity(new Intent(ViewsActivity.this, LabelViewActivity.class));
     }
+
+    @OnClick(R.id.btn_messagebar)
+    void gotoMessageBarActivity() {
+        startActivity(new Intent(ViewsActivity.this, MessageBarActivity.class));
+    }
 }
